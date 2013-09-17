@@ -5,7 +5,7 @@ require 'wcc/auth/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "wcc-auth"
-  spec.version       = Wcc::Auth::VERSION
+  spec.version       = WCC::Auth::VERSION
   spec.authors       = ["Travis Petticrew"]
   spec.email         = ["tpetticrew@watermark.org"]
   spec.description   = %q{Simple gem for setting up authentication to Watermark}
@@ -17,6 +17,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "devise", "~> 3.1.0"
+  spec.add_dependency "omniauth", "~> 1.0.1"
+  spec.add_dependency "omniauth-oauth2", "~> 1.0.0"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
