@@ -19,7 +19,7 @@ WCC::Auth::Config = Struct.new(:environment,
   private
 
   def default_provider
-    case environment
+    case environment.to_sym
     when :development
       "http://nucleus.dev"
     when :production

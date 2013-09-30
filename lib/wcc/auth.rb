@@ -1,6 +1,8 @@
 require "wcc/auth/version"
 require "wcc/auth/config"
 
+require "wcc/auth/providers"
+
 require "omniauth"
 require "omniauth-oauth2"
 
