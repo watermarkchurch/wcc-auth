@@ -2,7 +2,7 @@ class OmniAuth::Strategies::Watermark < OmniAuth::Strategies::OAuth2
   option :name, :watermark
 
   option :client_options, {
-    site: WCC::Auth.config.provider,
+    site: WCC::Auth.config.authorize_site,
     authorize_path: WCC::Auth.config.authorize_path,
   }
 
@@ -15,7 +15,7 @@ class OmniAuth::Strategies::Watermark < OmniAuth::Strategies::OAuth2
       email: raw_info["email"],
       first_name: raw_info["first_name"],
       last_name: raw_info["last_name"],
-      access_level: raw_info["access_level"],
+      access_level_id: raw_info["access_level_id"],
     }
   end
 

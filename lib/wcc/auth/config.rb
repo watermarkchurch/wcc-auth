@@ -1,15 +1,11 @@
 WCC::Auth::Config = Struct.new(:environment,
                                :app_id,
                                :app_secret,
-                               :provider,
+                               :authorize_site,
                                :authorize_path) do
 
-  def environment
-    self[:environment] || :development
-  end
-
-  def provider
-    self[:provider] || default_provider
+  def authorize_site
+    self[:authorize_site] || default_authorize_site
   end
 
   def authorize_path
@@ -18,12 +14,12 @@ WCC::Auth::Config = Struct.new(:environment,
 
   private
 
-  def default_provider
+  def default_authorize_site
     case environment.to_sym
     when :development
       "http://nucleus.dev"
     when :production
-      "http://login.watermark.org"
+      "https://login.watermark.org"
     end
   end
 
