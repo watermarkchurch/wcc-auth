@@ -26,6 +26,10 @@ module WCC::Auth::Providers::ActiveRecord
       WCC::Auth::AccessLevel[access_level_id || :none]
     end
 
+    def has_access?(level)
+      access_level >= WCC::Auth::AccessLevel[level]
+    end
+
   end
 
   def self.included(receiver)
