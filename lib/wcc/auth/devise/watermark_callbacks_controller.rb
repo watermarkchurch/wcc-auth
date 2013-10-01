@@ -1,4 +1,5 @@
 class WCC::Auth::Devise::WatermarkCallbacksController < Devise::OmniauthCallbacksController
+  skip_authorization_check if respond_to?(:skip_authorization_check)
 
   def watermark
     oauth_data = request.env["omniauth.auth"]
