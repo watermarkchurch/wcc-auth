@@ -16,5 +16,7 @@ WCC::Auth.finalize_callbacks << -> {
       WCC::Auth.config.app_id,
       WCC::Auth.config.app_secret
   end
+
+  OmniAuth.config.full_host = WCC::Auth.config.app_url
 }
 
