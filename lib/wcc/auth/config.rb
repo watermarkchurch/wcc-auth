@@ -28,6 +28,17 @@ WCC::Auth::Config = Struct.new(:environment,
     self[:app_domain_suffix] || default_app_domain_suffix
   end
 
+  def nucleus_url
+    case environment.to_sym
+    when :production
+      "https://login.watermark.org"
+    when :staging
+      "http://login.staging.watermark.org"
+    when :development
+      "http://login.dev"
+    end
+  end
+
   private
 
   def default_app_url
@@ -55,14 +66,7 @@ WCC::Auth::Config = Struct.new(:environment,
   end
 
   def default_authorize_site
-    case environment.to_sym
-    when :production
-      "https://login.watermark.org"
-    when :staging
-      "http://login.staging.watermark.org"
-    when :development
-      "http://login.dev"
-    end
+    nucleus_url
   end
 
 end
