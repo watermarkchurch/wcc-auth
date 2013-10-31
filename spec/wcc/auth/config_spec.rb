@@ -7,7 +7,7 @@ describe WCC::Auth::Config do
     subject { klass.new }
     it "sets authorize_site according to environment" do
       subject.environment = :development
-      expect(subject.authorize_site).to eq("http://nucleus.dev")
+      expect(subject.authorize_site).to eq("http://login.dev")
       subject.environment = :production
       expect(subject.authorize_site).to eq("https://login.watermark.org")
     end
