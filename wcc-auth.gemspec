@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "cancan", "~> 1.6"
   spec.add_dependency "devise", "~> 3.1"
-  spec.add_dependency "omniauth", "~> 1.1.4"
-  spec.add_dependency "omniauth-oauth2", "~> 1.0.0"
+  spec.add_dependency "omniauth", "~> 1.1"
+  spec.add_dependency "omniauth-oauth2", "~> 1.0"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
