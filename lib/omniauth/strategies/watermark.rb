@@ -6,6 +6,8 @@ class OmniAuth::Strategies::Watermark < OmniAuth::Strategies::OAuth2
     authorize_path: WCC::Auth.config.authorize_path,
   }
 
+  option :authorize_params, WCC::Auth.config.authorize_params
+
   uid do
     raw_info["id"]
   end

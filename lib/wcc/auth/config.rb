@@ -6,7 +6,8 @@ WCC::Auth::Config = Struct.new(:environment,
                                :app_secret,
                                :app_domain_suffix,
                                :authorize_site,
-                               :authorize_path) do
+                               :authorize_path,
+                               :authorize_params) do
 
   def authorize_site
     self[:authorize_site] || default_authorize_site
@@ -14,6 +15,10 @@ WCC::Auth::Config = Struct.new(:environment,
 
   def authorize_path
     self[:authorize_path] || "/oauth/authorize"
+  end
+
+  def authorize_params
+    self[:authorize_params] || {}
   end
 
   def app_url
