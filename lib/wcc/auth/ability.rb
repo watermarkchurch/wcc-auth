@@ -20,8 +20,10 @@ class WCC::Auth::TieredAbility
     self.class.levels
   end
 
-  def self.at_level(level, &can_block)
-    levels[WCC::Auth::AccessLevel[level]] << can_block
+  def self.at_level(level_key, &can_block)
+    level = WCC::Auth::AccessLevel[level_key] or
+      raise ArgumentError, "#{level_key} is not a valid access level"
+    levels[level] << can_block
   end
 
   def self.levels
