@@ -34,6 +34,8 @@ WCC::Auth::Config = Struct.new(:environment,
   end
 
   def nucleus_url
+    return ENV['NUCLEUS_URL'] if ENV['NUCLEUS_URL']
+
     case environment.to_sym
     when :production
       "https://login.watermark.org"
