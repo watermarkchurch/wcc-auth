@@ -10,11 +10,11 @@ WCC::Auth::Config = Struct.new(:environment,
                                :authorize_params) do
 
   def authorize_site
-    self[:authorize_site] || default_authorize_site
+    self[:authorize_site] || ENV['WCC_AUTHORIZE_SITE'] || default_authorize_site
   end
 
   def authorize_path
-    self[:authorize_path] || "/oauth/authorize"
+    self[:authorize_path] || ENV['WCC_AUTHORIZE_PATH'] || "/oauth/authorize"
   end
 
   def authorize_params
@@ -22,7 +22,7 @@ WCC::Auth::Config = Struct.new(:environment,
   end
 
   def app_url
-    self[:app_url] || default_app_url
+    self[:app_url] || ENV['APP_URL'] || default_app_url
   end
 
   def app_url_protocol
