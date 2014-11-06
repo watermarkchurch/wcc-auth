@@ -17,10 +17,10 @@ module WCC::Auth
     end
 
     def self.[](index_or_slug, db=ACCESS_LEVELS)
-      all(db).select do |al|
+      all(db).find do |al|
         al.level.to_s === index_or_slug.to_s ||
           al.slug === index_or_slug.to_s
-      end.last
+      end
     end
 
     def self.all(db=ACCESS_LEVELS)
