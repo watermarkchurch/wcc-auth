@@ -11,14 +11,14 @@ any Ruby project. Currently, the only tested path is Rails with Devise.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'wcc-auth', '~> 0.3.0'
+gem 'wcc-auth', '~> 0.3.2'
 ```
 
 If you are using a Rails app with Devise you can use a special require
 hook that will setup all the Devise specific configuration for you.
 
 ```ruby
-gem 'wcc-auth', '~> 0.3.0', require: 'wcc/auth/devise'
+gem 'wcc-auth', '~> 0.3.2', require: 'wcc/auth/devise'
 ```
 
 ## Configuration
