@@ -54,6 +54,7 @@ end
 ```ruby
 class User < ActiveRecord::Base
   include WCC::Auth::Providers::ActiveRecord
+  devise :omniauthable
 
   # ...
 
