@@ -19,6 +19,7 @@ class OmniAuth::Strategies::Watermark < OmniAuth::Strategies::OAuth2
       last_name: raw_info["last_name"],
       access_level_id: raw_info["access_level_id"],
       arena_id: raw_info["arena_id"],
+      applications: raw_info["applications"]
     }
   end
 
