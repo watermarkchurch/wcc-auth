@@ -33,7 +33,7 @@ describe WCC::Auth::AccessLevel do
     it "returns array of records as listed in db argument" do
       levels = subject.all(test_db)
       expect(levels.count).to eq(2)
-      expect(levels.all? { |level| level.kind_of?(klass) }).to be_true
+      expect(levels.all? { |level| level.kind_of?(klass) }).to be_truthy
     end
 
     it "returns objects in level order" do
@@ -55,9 +55,9 @@ describe WCC::Auth::AccessLevel do
       b = klass.new
       a.level = 1
       b.level = 2
-      expect(a < b).to be_true
-      expect(b == a).to be_false
-      expect(b < a).to be_false
+      expect(a < b).to be_truthy
+      expect(b == a).to be_falsey
+      expect(b < a).to be_falsey
     end
   end
 
