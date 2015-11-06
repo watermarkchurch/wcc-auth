@@ -33,6 +33,12 @@ WCC::Auth::Config = Struct.new(:environment,
     self[:app_domain_suffix] || default_app_domain_suffix
   end
 
+  def url_for(app_name)
+    return ENV["#{app_name.to_s.upcase}_URL"] if ENV["#{app_name.to_s.upcase}_URL"]
+
+    "#{app_url_protocol_for(environment)}://#{app_name}#{app_domain_suffix_for(environment)}"
+  end
+
   def nucleus_url
     return ENV['NUCLEUS_URL'] if ENV['NUCLEUS_URL']
 
@@ -46,22 +52,7 @@ WCC::Auth::Config = Struct.new(:environment,
     end
   end
 
-  private
-
-  def default_app_url
-    "#{app_url_protocol}://#{app_name}#{app_domain_suffix}"
-  end
-
-  def default_app_url_protocol
-    case environment.to_sym
-    when :production
-      "https"
-    else
-      "http"
-    end
-  end
-
-  def default_app_domain_suffix
+  def app_domain_suffix_for(environment)
     case environment.to_sym
     when :production
       ".watermark.org"
@@ -70,6 +61,29 @@ WCC::Auth::Config = Struct.new(:environment,
     when :development
       ".dev"
     end
+  end
+
+  def app_url_protocol_for(environment)
+    case environment.to_sym
+    when :production
+      "https"
+    else
+      "http"
+    end
+  end
+
+  private
+
+  def default_app_url
+    "#{app_url_protocol}://#{app_name}#{app_domain_suffix}"
+  end
+
+  def default_app_url_protocol
+    app_url_protocol_for(environment)
+  end
+
+  def default_app_domain_suffix
+    app_domain_suffix_for(environment)
   end
 
   def default_authorize_site
