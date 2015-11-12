@@ -23,6 +23,13 @@ class OmniAuth::Strategies::Watermark < OmniAuth::Strategies::OAuth2
     }
   end
 
+  extra do
+    {
+      contact: raw_info["contact"],
+      address: raw_info["address"],
+    }
+  end
+
   def callback_url
     full_host + script_name + callback_path
   end
