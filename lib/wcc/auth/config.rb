@@ -42,14 +42,7 @@ WCC::Auth::Config = Struct.new(:environment,
   def nucleus_url
     return ENV['NUCLEUS_URL'] if ENV['NUCLEUS_URL']
 
-    case environment.to_sym
-    when :production
-      "https://login.watermark.org"
-    when :staging
-      "http://login.staging.watermark.org"
-    when :development
-      "http://login.dev"
-    end
+    "#{app_url_protocol_for(environment)}://login#{app_domain_suffix_for(environment)}"
   end
 
   def app_domain_suffix_for(environment)
@@ -59,7 +52,7 @@ WCC::Auth::Config = Struct.new(:environment,
     when :staging
       ".staging.watermark.org"
     when :development
-      ".dev"
+      ENV["WATERMARK_DEV_ENV_DOMAIN"] || ".dev"
     end
   end
 
