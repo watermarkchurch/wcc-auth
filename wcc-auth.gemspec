@@ -6,8 +6,8 @@ require 'wcc/auth/version'
 Gem::Specification.new do |spec|
   spec.name          = "wcc-auth"
   spec.version       = WCC::Auth::VERSION
-  spec.authors       = ["Travis Petticrew"]
-  spec.email         = ["tpetticrew@watermark.org"]
+  spec.authors       = ["Watermark Dev"]
+  spec.email         = ["dev@watermark.org"]
   spec.description   = %q{Authentication / Authorization library for Watermark apps}
   spec.summary       = File.readlines("README.md").join
   spec.homepage      = "https://github.com/watermarkchurch/wcc-auth"
