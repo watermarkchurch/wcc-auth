@@ -8,6 +8,8 @@ any Ruby project. Currently, the only tested path is Rails with Devise.
 
 ## Installation
 
+**NOTE: `v0.6.0` has been updated for use with Rails 5.1 and requires Ruby 2.2 or greater.**
+
 Add this line to your application's Gemfile:
 
 ```ruby
