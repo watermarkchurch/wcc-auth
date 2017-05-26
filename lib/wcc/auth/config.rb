@@ -52,7 +52,7 @@ WCC::Auth::Config = Struct.new(:environment,
     when :staging
       ".staging.watermark.org"
     when :development
-      ENV["WATERMARK_DEV_ENV_DOMAIN"] || ".dev"
+      ENV["WATERMARK_DEV_ENV_DOMAIN"] || ".wcc"
     end
   end
 
