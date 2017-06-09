@@ -109,6 +109,12 @@ class Ability < WCC::Auth::TieredAbility
 end
 ```
 
+## Notes
+
+#### Sign out links
+
+If your project is using `TurboLinks`, you'll need to disable it for the sign out link(s). Otherwise, it will cause your app to enter an infinite redirect loop.
+
 ## Contributing
 
 1. Fork it
