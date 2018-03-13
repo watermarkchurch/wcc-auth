@@ -56,10 +56,8 @@ end
 ```ruby
 class User < ActiveRecord::Base
   include WCC::Auth::Providers::ActiveRecord
-  devise :omniauthable
-
+  devise :omniauthable, omniauth_providers: %i[watermark]
   # ...
-
 end
 ```
 
