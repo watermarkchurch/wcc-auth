@@ -10,16 +10,18 @@ module WCC
                'wcc/auth/devise/watermark_callbacks_controller'
     end
 
-    ConfiguresOAuth = lambda { |env|
+    SetupOAuth = lambda { |env|
       request = Rack::Request.new(env)
 
-      env['omniauth.strategy'].options[:client_id] = WCC::Auth.config.app_id
-      env['omniauth.strategy'].options[:client_secret] =
-        WCC::Auth.config.app_secret
-      env['omniauth.strategy'].options[:authorize_params] =
-        WCC::Auth.config.authorize_params.merge(
-          request.params['authorize_params'] || {}
-        )
+      env['omniauth.strategy'].options[:client_id] = config.app_id
+      env['omniauth.strategy'].options[:client_secret] = config.app_secret
+      auth_params = config.authorize_params.merge(
+        request.params['authorize_params'] || {}
+      )
+
+      auth_params.each do |k, v|
+        env['omniauth.strategy'].options[:authorize_params][k] = v
+      end
     }
   end
 end
@@ -28,7 +30,7 @@ WCC::Auth.finalize_callbacks << lambda {
   require 'omniauth/strategies/watermark'
 
   Devise.setup do |config|
-    config.omniauth :watermark, setup: WCC::Auth::ConfiguresOAuth
+    config.omniauth :watermark, setup: WCC::Auth::SetupOAuth
   end
 
   OmniAuth.config.full_host = WCC::Auth.config.app_url
