@@ -18,7 +18,7 @@ module WCC
         client_secret: WCC::Auth.config.app_secret
       )
       env['omniauth.strategy'].options[:authorize_params].merge!(
-        request.parameters['authorize_params'] || {}
+        request.params['authorize_params'] || {}
       )
     }
   end
