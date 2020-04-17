@@ -28,7 +28,7 @@ WCC::Auth.finalize_callbacks << lambda {
   require 'omniauth/strategies/watermark'
 
   Devise.setup do |config|
-    config.omniauth :watermark, setup: WCC::Auth::ConfiguresAuth
+    config.omniauth :watermark, setup: WCC::Auth::ConfiguresOAuth
   end
 
   OmniAuth.config.full_host = WCC::Auth.config.app_url
