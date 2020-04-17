@@ -13,13 +13,13 @@ module WCC
     ConfiguresOAuth = lambda { |env|
       request = Rack::Request.new(env)
 
-      env['omniauth.strategy'].options.merge!(
-        client_id: WCC::Auth.config.app_id,
-        client_secret: WCC::Auth.config.app_secret
-      )
-      env['omniauth.strategy'].options[:authorize_params].merge!(
-        request.params['authorize_params'] || {}
-      )
+      env['omniauth.strategy'].options[:client_id] = WCC::Auth.config.app_id
+      env['omniauth.strategy'].options[:client_secret] =
+        WCC::Auth.config.app_secret
+      env['omniauth.strategy'].options[:authorize_params] =
+        WCC::Auth.config.authorize_params.merge(
+          request.params['authorize_params'] || {}
+        )
     }
   end
 end
